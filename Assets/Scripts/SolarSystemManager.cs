@@ -1,14 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SolarSystemManager : MonoBehaviour
 {
 
     readonly float G = 100f;
-    GameObject[] celestials;
+    public List<GameObject> celestials;
 
     void Start()
     {
-        celestials = GameObject.FindGameObjectsWithTag("Celestial");
+        celestials = new List<GameObject>(GameObject.FindGameObjectsWithTag("Celestial"));
         InitialVelocity();
     }
 
@@ -21,6 +22,7 @@ public class SolarSystemManager : MonoBehaviour
     {
         foreach (var body in celestials)
         {
+            Debug.Log(body.name);
             foreach (var body2 in celestials)
             {
                 if (!body.Equals(body2))
